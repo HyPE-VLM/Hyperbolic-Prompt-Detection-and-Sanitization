@@ -1,3 +1,4 @@
+.DS_Store
 .cache/*
 HySAC/hysac.egg-info/*
 HySAC/__pycache__/*
