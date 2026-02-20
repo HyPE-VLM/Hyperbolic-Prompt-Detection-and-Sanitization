@@ -1,4 +1,4 @@
-# HARNESSING HYPERBOLIC GEOMETRY FOR HARMFUL PROMPT DETECTION AND SANITIZATION
+# Harnessing Hyperbolic Geometry for Harmful Prompt Detection and Sanitization
 
 This repository contains code for the paper "Harnessing Hyperbolic Geometry for Harmful Prompt Detection and Sanitization", accepted at ICLR 2026. 
 The project explores the use of hyperbolic geometry to detect and sanitize prompts with harmful intent.
