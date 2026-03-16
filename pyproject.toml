@@ -20,7 +20,8 @@ dependencies = [
   "huggingface-hub",
   "tokenizers",
   "safetensors",
-  "loguru"
+  "loguru",
+  "geoopt"
 ]
 
 [tool.setuptools.packages.find]
