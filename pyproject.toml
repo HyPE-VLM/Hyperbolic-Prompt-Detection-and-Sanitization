@@ -15,6 +15,12 @@ dependencies = [
   "transformers>=4.31.0",
   "accelerate",
   "numpy",
+  "peft",
+  "bitsandbytes",
+  "huggingface-hub",
+  "tokenizers",
+  "safetensors",
+  "loguru"
 ]
 
 [tool.setuptools]
