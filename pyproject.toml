@@ -23,9 +23,6 @@ dependencies = [
   "loguru"
 ]
 
-[tool.setuptools]
-package-dir = {"" = "src"}
-
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["hype*", "HySAC*", "HyperbolicSVDD*"]
