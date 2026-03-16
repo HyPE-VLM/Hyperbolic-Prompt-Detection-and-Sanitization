@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hype"
+version = "0.1.0"
+description = "HyPE: Hyperbolic Prompt Detection and Sanitization (ICLR 2026)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE.txt" }
+authors = [{ name = "HyPE-VLM" }]
+dependencies = [
+  "torch",
+  "transformers>=4.31.0",
+  "accelerate",
+  "numpy",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+hype = ["assets/*.pth"]
