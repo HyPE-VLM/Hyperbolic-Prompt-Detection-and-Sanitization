@@ -357,18 +357,18 @@ class LorentzHyperbolicOriginSVDD:
     #     return self
 
     def load(self, path):
-    """Load model parameters from file"""
-    try:
-        checkpoint = torch.load(path)
-    except (pickle.UnpicklingError, RuntimeError) as e:
-        msg = str(e)
-        if "weights_only" in msg or "Weights only load failed" in msg:
-            checkpoint = torch.load(path, weights_only=False)
-        else:
-            raise
-
-    self.curvature = checkpoint["curvature"]
-    self.nu = checkpoint["nu"]
-    self.center = checkpoint["center"]
-    self.radius_param = torch.nn.Parameter(torch.tensor(checkpoint["radius"]))
-    return self
+        """Load model parameters from file"""
+        try:
+            checkpoint = torch.load(path)
+        except (pickle.UnpicklingError, RuntimeError) as e:
+            msg = str(e)
+            if "weights_only" in msg or "Weights only load failed" in msg:
+                checkpoint = torch.load(path, weights_only=False)
+            else:
+                raise
+    
+        self.curvature = checkpoint["curvature"]
+        self.nu = checkpoint["nu"]
+        self.center = checkpoint["center"]
+        self.radius_param = torch.nn.Parameter(torch.tensor(checkpoint["radius"]))
+        return self
