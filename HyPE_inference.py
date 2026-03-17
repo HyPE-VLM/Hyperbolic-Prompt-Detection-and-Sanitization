@@ -12,7 +12,7 @@ from HyperbolicSVDD.source.SVDD import LorentzHyperbolicOriginSVDD, project_to_l
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 model = LorentzHyperbolicOriginSVDD(curvature=2.3026, radius_lr=0.2, nu=0.01, center_init="origin")
-model.load("./best_hyperbolic_svdd_model.pth")
+model.load("./hype/assets/best_hyperbolic_svdd_model.pth")
 model.center = model.center.to(DEVICE)
 
 
