@@ -132,7 +132,7 @@ def project_to_lorentz(x, curv=1.0):
 curvature = 2.3026
 root = torch.zeros((1, 768))
 root = project_to_lorentz(root, curvature)
-print(root.shape)
+#print(root.shape)
 
 
 class LorentzHyperbolicOriginSVDD:
