@@ -104,7 +104,7 @@ def lorentz_inner_product(x, y):
 
 def batch_hyperbolic_distance(x, y, curv=1.0, eps=1e-5, max_acosh=1e6):
     # evaluate the points are on the manifold
-    print(f"x shape: {x.shape}, y shape: {y.shape}")
+    # print(f"x shape: {x.shape}, y shape: {y.shape}")
     assert is_lorentz_point(x, curv)
     assert is_lorentz_point(y, curv)
     ip = lorentz_inner_product(x, y)
