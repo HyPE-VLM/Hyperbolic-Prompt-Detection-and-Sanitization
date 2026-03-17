@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from functools import lru_cache
 from typing import Optional, Union
+from transformers.utils import logging as hf_logging
 
 import torch
 from transformers import CLIPTokenizer
@@ -11,6 +12,9 @@ from HySAC.hysac.models import HySAC
 from HyperbolicSVDD.source.SVDD import LorentzHyperbolicOriginSVDD, project_to_lorentz
 
 from ._weights import get_svdd_weights_path
+
+hf_logging.set_verbosity_error()
+hf_logging.disable_progress_bar()
 
 
 def _resolve_device(device: Optional[Union[str, torch.device]] = None) -> torch.device:
