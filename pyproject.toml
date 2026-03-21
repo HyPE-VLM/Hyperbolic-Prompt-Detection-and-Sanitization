@@ -3,12 +3,16 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "hype-"
+name = "hype-defense"
 version = "0.1.2"
 description = "HyPE: Hyperbolic Prompt Espial (ICLR 2026)"
 requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
 readme = { file = "src/pypi.md", content-type = "text/markdown" }
-license = { file = "LICENSE.txt" }
+license = "CC-BY-NC-ND-4.0"
 authors = [{ name = "Antonio Emanuele Cinà", email="acina04@gmail.com" }]
 
 dependencies = [
