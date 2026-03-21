@@ -3,8 +3,8 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "hype-defense"
-version = "0.1.1"
+name = "hype-"
+version = "0.1.2"
 description = "HyPE: Hyperbolic Prompt Espial (ICLR 2026)"
 requires-python = ">=3.10"
 readme = { file = "src/pypi.md", content-type = "text/markdown" }
