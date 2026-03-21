@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hype-defense"
-version = "0.1.0"
+version = "0.1.1"
 description = "HyPE: Hyperbolic Prompt Espial (ICLR 2026)"
 requires-python = ">=3.10"
 readme = { file = "pypi.md", content-type = "text/markdown" }
@@ -31,3 +31,6 @@ include = ["hype*", "HySAC.hysac*", "HyperbolicSVDD*"]
 
 [tool.setuptools.package-data]
 hype = ["assets/*.pth"]
+
+[project.urls]
+Homepage = "https://github.com/HyPE-VLM/Hyperbolic-Prompt-Detection-and-Sanitization/"
