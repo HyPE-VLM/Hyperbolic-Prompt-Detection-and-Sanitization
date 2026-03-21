@@ -5,11 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "hype-defense"
 version = "0.1.0"
-description = "HyPE: Hyperbolic Prompt Detection and Sanitization (ICLR 2026)"
+description = "HyPE: Hyperbolic Prompt Espial (ICLR 2026)"
 requires-python = ">=3.10"
 readme = { file = "pypi.md", content-type = "text/markdown" }
 license = { file = "LICENSE.txt" }
-authors = [{ name = "HyPE-VLM" }]
+authors = [{ name = "Antonio Emanuele Cinà", email="acina04@gmail.com" }]
+
 dependencies = [
   "torch",
   "transformers>=4.31.0",
@@ -25,7 +26,7 @@ dependencies = [
 ]
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["hype*", "HySAC*", "HyperbolicSVDD*"]
 
 [tool.setuptools.package-data]
