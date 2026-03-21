@@ -27,7 +27,7 @@ dependencies = [
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["hype*", "HySAC*", "HyperbolicSVDD*"]
+include = ["hype*", "HySAC.hysac*", "HyperbolicSVDD*"]
 
 [tool.setuptools.package-data]
 hype = ["assets/*.pth"]
