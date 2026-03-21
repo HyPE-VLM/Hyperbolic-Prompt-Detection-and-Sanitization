@@ -50,7 +50,8 @@ cd Hyperbolic-Prompt-Detection-and-Sanitization
 
 conda create -n hype python=3.10
 conda activate hype
-pip install -r requirements.txt
+cd requirements
+pip install -r repro.txt
 ```
 
 ## Contact
