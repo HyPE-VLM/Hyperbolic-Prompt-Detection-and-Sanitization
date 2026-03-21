@@ -6,8 +6,8 @@ import os
 import sys
 import torch
 from transformers import CLIPTokenizer
-from HySAC.hysac.models import HySAC
-from HyperbolicSVDD.source.SVDD import LorentzHyperbolicOriginSVDD, project_to_lorentz
+from src.HySAC.hysac.models import HySAC
+from src.HyperbolicSVDD.source.SVDD import LorentzHyperbolicOriginSVDD, project_to_lorentz
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
