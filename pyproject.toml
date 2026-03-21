@@ -7,7 +7,7 @@ name = "hype-defense"
 version = "0.1.1"
 description = "HyPE: Hyperbolic Prompt Espial (ICLR 2026)"
 requires-python = ">=3.10"
-readme = { file = "pypi.md", content-type = "text/markdown" }
+readme = { file = "src/pypi.md", content-type = "text/markdown" }
 license = { file = "LICENSE.txt" }
 authors = [{ name = "Antonio Emanuele Cinà", email="acina04@gmail.com" }]
 
