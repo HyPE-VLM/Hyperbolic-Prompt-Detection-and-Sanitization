@@ -45,7 +45,7 @@ def hype_then_hyps_sanitize(
             details=None,
         )
 
-    from HyPS.harmful_word_identification.word_attributions import (
+    from hyps.harmful_word_identification.word_attributions import (
         get_word_attributions,
         filter_positive_word_attributions,
     )
