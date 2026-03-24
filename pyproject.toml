@@ -26,15 +26,19 @@ dependencies = [
   "tokenizers",
   "safetensors",
   "loguru",
-  "geoopt"
+  "geoopt",
+  "captum",
+  "requests",
+  "tqdm"
 ]
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["hype*", "HySAC*", "HyperbolicSVDD*"]
+include = ["hype*", "hyps*", "HySAC*", "HyperbolicSVDD*"]
 
 [tool.setuptools.package-data]
 hype = ["assets/*.pth"]
+hyps = ["prompt_sanitization/*.txt"]
 
 [project.urls]
 Homepage = "https://github.com/HyPE-VLM/Hyperbolic-Prompt-Detection-and-Sanitization/"
