@@ -337,6 +337,12 @@ class LorentzHyperbolicOriginSVDD:
             )
             predictions = (distances <= self.radius_param).int()
         return predictions
+        
+    def predict_xai(self, x):
+        distances = elementwise_dist(
+            x[:, 1:], self.center[0][1:], curv=self.curvature
+        )
+        return distances    
     
     def save(self, path):
         """Save model parameters to file"""
