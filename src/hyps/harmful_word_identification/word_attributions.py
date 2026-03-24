@@ -61,7 +61,7 @@ class WordAttributionConfig:
     clip_model_name: str = "openai/clip-vit-large-patch14"
     hysac_repo_id: str = "aimagelab/hysac"
     max_length: int = 77
-    n_steps: int = 500
+    n_steps: int = 50
     default_baseline: str = ""
 
 
