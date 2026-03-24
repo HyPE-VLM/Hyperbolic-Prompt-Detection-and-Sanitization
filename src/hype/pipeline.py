@@ -49,7 +49,7 @@ def hype_then_hyps_sanitize(
         get_word_attributions,
         filter_positive_word_attributions,
     )
-    from HyPS.prompt_sanitization.thesaurus_llm import process_prompt
+    from hyps.prompt_sanitization.thesaurus_llm import process_prompt
 
     word_attributions = get_word_attributions(prompt, device=device)
     positive_word_attributions = filter_positive_word_attributions(word_attributions)
