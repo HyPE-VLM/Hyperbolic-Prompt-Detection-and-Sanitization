@@ -61,7 +61,6 @@ Then you can run the full pipeline:
 from hype.pipeline import sanitize
 
 result = sanitize("harmful prompt...")  # default method="thesaurus_llm"
-print(result.hype_pred)          # 0 = harmful, 1 = benign
 print(result.sanitized_prompt)   # sanitized output (if harmful)
 ```
 
