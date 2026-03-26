@@ -1,5 +1,14 @@
 import re
 
+from hyps.prompt_sanitization.stopwords import get_english_stopwords
+
+_WORD_STRIP_RE = re.compile(r"^[^\w]+|[^\w]+$")
+
+
+def _normalize_token(token: str) -> str:
+    return _WORD_STRIP_RE.sub("", token.strip().lower())
+
+
 def remove_word(text: str, word: str) -> str:
     pattern = r"\b{}\b[,.!?;:]*\s*".format(re.escape(word))
     text = re.sub(pattern, "", text, flags=re.IGNORECASE)
@@ -8,11 +17,25 @@ def remove_word(text: str, word: str) -> str:
 
 
 def get_top_k_influential_words(word_attributions, k=1):
-    attributions = [t for t in word_attributions if t[1] > 0]
-    if not attributions:
+    stop_words = get_english_stopwords()
+
+    # keep only positive attributions, excluding stopwords
+    filtered = []
+    for w, score in word_attributions:
+        if score <= 0:
+            continue
+        nw = _normalize_token(w)
+        if not nw:
+            continue
+        if nw in stop_words:
+            continue
+        filtered.append((w, score))
+
+    if not filtered:
         return []
-    attributions.sort(key=lambda x: x[1], reverse=True)
-    return [w for w, s in attributions[:k]]
+
+    filtered.sort(key=lambda x: x[1], reverse=True)
+    return [w for w, _s in filtered[:k]]
 
 
 def process_prompt(harmful_prompt, word_attributions, k, model_predict_fn):
