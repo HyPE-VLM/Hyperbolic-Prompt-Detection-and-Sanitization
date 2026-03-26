@@ -64,15 +64,15 @@ result = sanitize("harmful prompt...")  # default method="thesaurus_llm"
 print(result.sanitized_prompt)   # sanitized output (if harmful)
 ```
 
-To choose a different sanitization technique, pass `method`:
+To choose a different sanitization technique, pass `method` (and optionally tune `k`, which controls how many top words with **positive attribution scores**—i.e., the most harmful/influential words—HyPS will modify; the default is `k=5`):
 
 ```python
 from hype.pipeline import sanitize
 
-result = sanitize("harmful prompt...", method="word_removal")
+result = sanitize("harmful prompt...", method="word_removal", k=1)
 print(result.sanitized_prompt)
 
-result = sanitize("harmful prompt...", method="thesaurus_word_removal")
+result = sanitize("harmful prompt...", method="thesaurus_word_removal", k=2)
 print(result.sanitized_prompt)
 ```
 **Note:** in the paper’s experiments we computed word attributions for harmful prompts using Layer Integrated Gradients (LIG) with a paired benign prompt as the baseline, but in this library (online use), we default baseline_prompt to an empty string because a paired benign prompt is typically not available at inference time.
