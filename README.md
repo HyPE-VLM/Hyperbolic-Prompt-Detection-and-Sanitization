@@ -55,7 +55,7 @@ export MERRIAM_WEBSTER_API_KEY="YOUR_KEY_HERE"
 Then you can run the full pipeline:
 
 ```python
-from hype.pipeline import hype_then_hyps_sanitize
+from hype.pipeline import sanitize
 
 result = sanitize("harmful prompt...")
 print(result.hype_pred)          # 0 = harmful, 1 = benign
