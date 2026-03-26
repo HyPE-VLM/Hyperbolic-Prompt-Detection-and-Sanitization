@@ -12,12 +12,12 @@ This repository contains code for the paper **"Harnessing Hyperbolic Geometry fo
 - Python **3.10+** (recommended)
 
 ### Installation (recommended: via pip)
-If you only want to run HyPE inference, you can install the package directly from PyPI:
+If you want to run HyPE detection and HyPS sanitization, you can install the package directly from PyPI:
 
 ```bash
-conda create -n hype python=3.10
-conda activate hype
-pip install hype-defense
+conda create -n defense python=3.10
+conda activate defense
+pip install hype-hyps
 ```
 
 ### Usage (two ways)
@@ -35,16 +35,19 @@ print(pred)  # 1 = harmless prompt, 0 = harmful prompt
 #### 2) Use HyPE + HyPS prompt sanitization (optional)
 HyPS is the prompt sanitization module. It is only activated if HyPE classifies the input prompt as harmful.
 
-This library integrates the **Thesaurus + LLM** sanitization approach described in the paper (one of the three sanitization strategies evaluated). The pipeline works as follows:
+This library supports three sanitization techniques (as evaluated in the paper). The default method is **`thesaurus_llm`**. The available methods are:
+- **`thesaurus_llm` (default):** Thesaurus-based antonym substitution with an LLM fallback rewrite when antonyms are unavailable for a given harmful word.
+- **`thesaurus_word_removal`:** Thesaurus-based antonym substitution; if no antonym is available for a given harmful word, the word is removed.
+- **`word_removal`:** Removes harmful words from the prompt.
+
+The pipeline works as follows:
 1. **HyPE** classifies a prompt as harmful or benign.
 2. If harmful, **HyPS** identifies influential harmful words.
-3. HyPS then attempts to replace influential harmful words using a thesaurus (antonyms).
-4. If no antonym is available for a given harmful word, HyPS falls back to an **LLM-based rewrite** mechanism to produce a benign prompt.
-5. If the prompt is benign, HyPS is not activated and `sanitized_prompt` will match the original prompt.
-
+3. The selected sanitization method is applied to produce a benign prompt.
+4. If the prompt is benign, HyPS is not activated and `sanitized_prompt` will match the original prompt.
 
 **Thesaurus API setup**  
-To enable the thesaurus (antonym) replacement step, you need a Merriam-Webster Thesaurus API key. You can obtain one at: https://dictionaryapi.com/
+To enable the thesaurus (antonym) replacement step (used by `thesaurus_llm` and `thesaurus_word_removal`), you need a Merriam-Webster Thesaurus API key. You can obtain one at: https://dictionaryapi.com/
 
 After obtaining the key, set the following environment variable:
 
@@ -57,11 +60,22 @@ Then you can run the full pipeline:
 ```python
 from hype.pipeline import sanitize
 
-result = sanitize("harmful prompt...")
+result = sanitize("harmful prompt...")  # default method="thesaurus_llm"
 print(result.hype_pred)          # 0 = harmful, 1 = benign
 print(result.sanitized_prompt)   # sanitized output (if harmful)
 ```
 
+To choose a different sanitization technique, pass `method`:
+
+```python
+from hype.pipeline import sanitize
+
+result = sanitize("harmful prompt...", method="word_removal")
+print(result.sanitized_prompt)
+
+result = sanitize("harmful prompt...", method="thesaurus_word_removal")
+print(result.sanitized_prompt)
+```
 **Note:** in the paper’s experiments we computed word attributions for harmful prompts using Layer Integrated Gradients (LIG) with a paired benign prompt as the baseline, but in this library (online use), we default baseline_prompt to an empty string because a paired benign prompt is typically not available at inference time.
 
 ### (Optional) Development / training installation
@@ -73,8 +87,8 @@ A typical setup:
 git clone https://github.com/HyPE-VLM/Hyperbolic-Prompt-Detection-and-Sanitization.git
 cd Hyperbolic-Prompt-Detection-and-Sanitization
 
-conda create -n hype python=3.10
-conda activate hype
+conda create -n defense python=3.10
+conda activate defense
 cd requirements
 pip install -r repro.txt
 ```
