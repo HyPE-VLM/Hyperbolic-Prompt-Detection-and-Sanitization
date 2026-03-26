@@ -57,7 +57,7 @@ Then you can run the full pipeline:
 ```python
 from hype.pipeline import hype_then_hyps_sanitize
 
-result = hype_then_hyps_sanitize("harmful prompt...")
+result = sanitize("harmful prompt...")
 print(result.hype_pred)          # 0 = harmful, 1 = benign
 print(result.sanitized_prompt)   # sanitized output (if harmful)
 ```
