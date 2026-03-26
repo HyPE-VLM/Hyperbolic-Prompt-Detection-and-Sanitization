@@ -50,8 +50,20 @@ def sanitize(
         get_word_attributions,
         filter_positive_word_attributions,
     )
-    from hyps.prompt_sanitization.thesaurus_llm import process_prompt
-
+    
+    if method == "thesaurus_llm":
+        from hyps.prompt_sanitization.thesaurus_llm import process_prompt
+    elif method == "word_removal":
+        from hyps.prompt_sanitization.word_removal import process_prompt
+    elif method == "thesaurus_word_removal":
+        from hyps.prompt_sanitization.thesaurus_word_removal import process_prompt
+    else:
+        raise ValueError(
+            f"Unknown sanitization method: {method!r}. "
+            "Choose one of: 'thesaurus_llm', 'word_removal', 'thesaurus_word_removal'."
+        )
+        
+    
     word_attributions = get_word_attributions(prompt, device=device)
     positive_word_attributions = filter_positive_word_attributions(word_attributions)
 
