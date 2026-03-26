@@ -17,7 +17,7 @@ class HyPEHyPSResult:
     details: Optional[Dict[str, Any]] = None
 
 
-def hype_then_hyps_sanitize(
+def sanitize(
     prompt: str,
     *,
     k: int = 5,
