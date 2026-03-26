@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "hype-defense"
-version = "0.1.6"
-description = "HyPE: Hyperbolic Prompt Espial (ICLR 2026)"
+name = "hype-hyps"
+version = "0.1.0"
+description = "HyPE + HyPS: Hyperbolic Prompt Espial and Sanitization (ICLR 2026)"
 requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
