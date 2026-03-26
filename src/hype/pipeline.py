@@ -21,6 +21,7 @@ def sanitize(
     prompt: str,
     *,
     k: int = 5,
+    method: str = "thesaurus_llm",
     device: Optional[Union[str, torch.device]] = None,
 ) -> HyPEHyPSResult:
     """
