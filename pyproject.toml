@@ -28,7 +28,8 @@ dependencies = [
   "loguru",
   "geoopt",
   "captum",
-  "requests"
+  "requests",
+  "nltk"
 ]
 
 [tool.setuptools.packages.find]
